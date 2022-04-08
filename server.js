@@ -6,7 +6,8 @@ const path = require('path')
 
 //creating app
 const app = express()
-
+// use static
+app.use(express.static('./public'))
 
 //paths
 const views = path.join(__dirname, '/resources/views')
