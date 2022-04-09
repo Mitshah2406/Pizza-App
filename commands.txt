@@ -1,0 +1,5 @@
+yarn run mix // for compiling
+   "webpack": "wttab -w -t 'Compiler' \\"npm run watch\\" ",
+    "server": "wttab -w -t 'Server' dev",
+    "open:page": "open 'http://localhost:4000/'"
+    "start": "concurrently --kill-others \"npm run dev\" \"npm run watch\"",
