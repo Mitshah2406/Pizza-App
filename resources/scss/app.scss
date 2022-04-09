@@ -38,3 +38,10 @@ section.hero{
         border-color: $pure;
     }
 }
+.btn-primary{
+    background-color: $primary;
+    transition: $smooth;
+    &:hover{
+        background: $primary-hover;
+    }
+}
