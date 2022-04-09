@@ -45,3 +45,36 @@ section.hero{
         background: $primary-hover;
     }
 }
+
+section.cart{
+    background: $secondary;
+    .amount{
+        color: $primary;
+    }
+}
+section.login{
+    background-color: $secondary;
+    min-height: calc(100vh - 86px);
+}
+.primary-color
+{
+    color: $primary;
+    &:hover{
+        color: $primary-hover;
+    }
+}
+.login-inputs{
+    border-color: $primary;
+    &:focus{
+        border-color: $primary-hover;
+    }
+}
+.login-btn-primary{
+    &:hover .svg-color-primary{
+        color: $primary;
+    }
+    .svg-color-primary
+    {
+        color: $primary-hover;
+    }
+}

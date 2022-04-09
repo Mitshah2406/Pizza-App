@@ -44,3 +44,36 @@ section.hero {
 .btn-primary:hover {
   background: #b23301;
 }
+
+section.cart {
+  background: #F8F8F8;
+}
+section.cart .amount {
+  color: #FE5F1E;
+}
+
+section.login {
+  background-color: #F8F8F8;
+  min-height: calc(100vh - 86px);
+}
+
+.primary-color {
+  color: #FE5F1E;
+}
+.primary-color:hover {
+  color: #b23301;
+}
+
+.login-inputs {
+  border-color: #FE5F1E;
+}
+.login-inputs:focus {
+  border-color: #b23301;
+}
+
+.login-btn-primary:hover .svg-color-primary {
+  color: #FE5F1E;
+}
+.login-btn-primary .svg-color-primary {
+  color: #b23301;
+}
