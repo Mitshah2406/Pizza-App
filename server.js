@@ -22,7 +22,6 @@ const views = path.join(__dirname, '/resources/views')
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-
 //set template engine
 app.use(expressLayout)
 app.set('view engine', 'ejs')
@@ -40,7 +39,12 @@ app.use(session({
 //flash
 app.use(flash())
 
+//global middleware
 
+app.use( (req, res, next)=>{
+    res.locals.session = req.session
+    next()
+})
 // routes
 app.use("/", require('./routes/web'))
 

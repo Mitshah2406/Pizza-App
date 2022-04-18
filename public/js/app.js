@@ -2176,16 +2176,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var addCartButtons = document.querySelectorAll('.add-to-cart');
+var cartCounter = document.getElementById('cartCounter');
 
 function updateCart(pizza) {
   console.log("inside updateCart");
   axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update-cart', pizza).then(function (res) {
-    console.log(res);
+    // console.log(res)
+    cartCounter.innerText = res.data.totalQty;
   });
 }
 
 addCartButtons.forEach(function (btn) {
-  console.log(btn.dataset);
+  // console.log(btn.dataset)
   btn.addEventListener('click', function () {
     var pizza = JSON.parse(btn.dataset.pizza); // console.log(pizza);
 
