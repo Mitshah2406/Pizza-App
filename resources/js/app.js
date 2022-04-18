@@ -1,10 +1,19 @@
 import axios from 'axios'
+import Noty from 'noty'
+
+
 let addCartButtons = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.getElementById('cartCounter')
+
+
  function updateCart (pizza){
     console.log("inside updateCart");
     axios.post('/update-cart',pizza).then(res=>{
-        // console.log(res)
+        new Noty({
+            timeout: 3000,
+            type:'success',
+            text: "Item Added To Cart"
+          }).show();
         cartCounter.innerText = res.data.totalQty
     })
 
