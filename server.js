@@ -41,7 +41,7 @@ app.use(flash())
 
 //global middleware
 
-app.use( (req, res, next)=>{
+app.use((req, res, next)=>{
     res.locals.session = req.session
     next()
 })

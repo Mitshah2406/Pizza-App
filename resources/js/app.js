@@ -7,14 +7,23 @@ let cartCounter = document.getElementById('cartCounter')
 
 
  function updateCart (pizza){
-    console.log("inside updateCart");
     axios.post('/update-cart',pizza).then(res=>{
         new Noty({
             timeout: 3000,
             type:'success',
-            text: "Item Added To Cart"
+            text: "Item Added To Cart",
+            progressBar:false,
+            layout:'bottomRight'
           }).show();
         cartCounter.innerText = res.data.totalQty
+    }).catch(e=>{
+        new Noty({
+            timeout: 3000,
+            type:'error',//danger=error=red
+            text: "Something Went Wrong!! Please Refresh Website",
+            progressBar:false,
+            layout:'bottomRight'
+          }).show();
     })
 
 }

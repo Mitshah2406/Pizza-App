@@ -2182,14 +2182,24 @@ var addCartButtons = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.getElementById('cartCounter');
 
 function updateCart(pizza) {
-  console.log("inside updateCart");
   axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update-cart', pizza).then(function (res) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
       timeout: 3000,
       type: 'success',
-      text: "Item Added To Cart"
+      text: "Item Added To Cart",
+      progressBar: false,
+      layout: 'bottomRight'
     }).show();
     cartCounter.innerText = res.data.totalQty;
+  })["catch"](function (e) {
+    new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+      timeout: 3000,
+      type: 'error',
+      //danger=error=red
+      text: "Something Went Wrong!! Please Refresh Website",
+      progressBar: false,
+      layout: 'bottomRight'
+    }).show();
   });
 }
 

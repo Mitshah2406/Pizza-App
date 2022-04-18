@@ -313,6 +313,9 @@ section.hero {
   color: #fff;
   border-color: #fff;
 }
+.add-to-cart:focus {
+  outline: none;
+}
 
 .btn-primary {
   background-color: #FE5F1E;

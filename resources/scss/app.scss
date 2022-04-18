@@ -38,6 +38,9 @@ section.hero{
         color: $pure;
         border-color: $pure;
     }
+    &:focus{
+        outline: none;
+    }
 }
 .btn-primary{
     background-color: $primary;
@@ -45,6 +48,7 @@ section.hero{
     &:hover{
         background: $primary-hover;
     }
+   
 }
 
 section.cart{
