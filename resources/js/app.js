@@ -5,7 +5,6 @@ import Noty from 'noty'
 let addCartButtons = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.getElementById('cartCounter')
 
-
  function updateCart (pizza){
     axios.post('/update-cart',pizza).then(res=>{
         new Noty({
@@ -35,3 +34,4 @@ addCartButtons.forEach((btn) =>{
         updateCart(pizza)
     })
 })
+

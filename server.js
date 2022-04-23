@@ -7,7 +7,7 @@ require('./database/db')
 const session = require('express-session')
 const flash = require('express-flash')
 const MongoStore = require('connect-mongo')
-
+const passport = require('passport')
 //creating app
 const app = express()
 // use static
@@ -36,6 +36,12 @@ app.use(session({
     cookie: { maxAge: 1000 * 24 * 24 * 60 } //24hr
 }))
 
+// Passport
+const Passport = require('./app/config/passport')
+Passport(passport)
+app.use(passport.initialize())
+app.use(passport.session())
+
 //flash
 app.use(flash())
 
@@ -43,6 +49,7 @@ app.use(flash())
 
 app.use((req, res, next)=>{
     res.locals.session = req.session
+    res.locals.user = req.user
     next()
 })
 // routes

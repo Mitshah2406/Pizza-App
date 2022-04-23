@@ -4,6 +4,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;">
+        <% if(messages.error){ %> 
+            <div class="alert alert-danger alert-dismissible fade show flex align-center justify-between" role="alert">
+                <div><strong>Error!</strong> <%=messages.error%></div>
+              </div>
+        <% } %>
             <!-- <span class="text-red-500 text-sm">Enter valid password</span> -->
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
@@ -27,7 +32,7 @@
                     type="submit">
                     Log In
                 </button>
-                <a class="inline-block align-baseline font-bold text-sm" href="/register">
+                <a class="inline-block align-baseline font-bold text-sm underLine" href="/register">
                     Don't have account?
                 </a>
             </div>

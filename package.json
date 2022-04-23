@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.0.2",
@@ -22,7 +24,9 @@
     "express-session": "^1.17.2",
     "install": "^0.13.0",
     "mongoose": "^6.3.0",
-    "noty": "^3.2.0-beta-deprecated"
+    "noty": "^3.2.0-beta-deprecated",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
