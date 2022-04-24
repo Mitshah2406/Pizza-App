@@ -28,6 +28,7 @@ router.get('/logout', authController.logout)
 //customer route
 router.post('/order', auth, orderController.orderPizza)
 router.get('/customer/orders', auth, orderController.showOrders)
+router.get('/customer/orders/:id', auth, orderController.trackOrder)
 
 //admin route
 router.get('/admin/orders', admin, adminOrderController.showOrders)

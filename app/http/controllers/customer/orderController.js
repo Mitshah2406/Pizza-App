@@ -1,5 +1,6 @@
 const Order = require('../../../models/order')
 const moment = require('moment')
+const order = require('../../../models/order')
 exports.orderPizza = async (req, res) => {
     const { phone, address } = req.body
     console.log(req.body)
@@ -24,8 +25,24 @@ exports.orderPizza = async (req, res) => {
     }
 }
 
-exports.showOrders = async (req,res)=>{
-    const orders = await Order.find({customerId:req.user._id},null,{sort:{'createdAt':-1}})
-    
-    res.render('customers/orders',{orders,moment})
+exports.showOrders = async (req, res) => {
+    const orders = await Order.find({ customerId: req.user._id }, null, { sort: { 'createdAt': -1 } })
+
+    res.render('customers/orders', { orders, moment })
+}
+
+exports.trackOrder = async (req, res) => {
+    try {
+        const order = await Order.findById({ _id: req.params.id })
+        if (req.user._id.toString() === order.customerId.toString()) {
+            res.render('customers/trackOrder', { order })
+        }
+        else {
+            req.flash('error', 'Failed To Track Order !!!')
+            res.redirect('/customers/orders')
+        }
+    }
+    catch (err) {
+        res.send('404 - track order ')
+    }
 }
