@@ -1,10 +1,10 @@
 import axios from 'axios'
 import Noty from 'noty'
-
+import { initAdmin } from './admin'
 
 let addCartButtons = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.getElementById('cartCounter')
-
+let alerts = document.querySelectorAll('.alert')
  function updateCart (pizza){
     axios.post('/update-cart',pizza).then(res=>{
         new Noty({
@@ -35,3 +35,13 @@ addCartButtons.forEach((btn) =>{
     })
 })
 
+alerts.forEach((alert)=>{
+    if(alert){
+        console.log('gg');
+        setTimeout(() => {
+            alert.style.display = "none"
+        }, 4000);
+    }
+})
+
+initAdmin()
