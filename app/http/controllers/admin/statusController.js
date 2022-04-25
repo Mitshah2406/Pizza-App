@@ -7,6 +7,12 @@ exports.updateStatus = async (req,res)=>{
             return res.redirect('/admin/orders')
         }
         else{
+            //emit event
+            const eventEmitter = req.app.get('eventEmitter')
+            const id = req.body.orderId
+            const status = req.body.status
+
+            eventEmitter.emit('orderUpdated',{id,status})
             req.flash('success','Updated Status Successfully !!!')
             return res.redirect('/admin/orders')
         }

@@ -8,6 +8,7 @@ const session = require('express-session')
 const flash = require('express-flash')
 const MongoStore = require('connect-mongo')
 const passport = require('passport')
+const Emitter = require('events')
 //creating app
 const app = express()
 // use static
@@ -27,6 +28,10 @@ app.use(expressLayout)
 app.set('view engine', 'ejs')
 app.set('views', views)
 
+//Event Emitter
+
+const eventEmitter = new Emitter()
+app.set('eventEmitter',eventEmitter)
 // session config
 app.use(session({
     secret: process.env.SECRET_KEY,
@@ -58,6 +63,25 @@ app.use("/", require('./routes/web'))
 //port
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+//server
+const server = app.listen(PORT, () => {
     console.log(`Connected to ${PORT}`);
+})
+
+//socket
+
+const io = require('socket.io')(server)
+io.on('connection',(socket)=>{
+    //Join
+    socket.on('join',(roomName)=>{
+        socket.join(roomName)
+    })
+})
+
+eventEmitter.on('orderUpdated',(data)=>{
+    io.to(`order_${data.id}`).emit('orderUpdated',data)
+})
+
+eventEmitter.on('orderPlaced', (data) => {
+    io.to('adminRoom').emit('orderPlaced', data)
 })

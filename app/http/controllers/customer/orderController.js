@@ -1,9 +1,7 @@
 const Order = require('../../../models/order')
 const moment = require('moment')
-const order = require('../../../models/order')
 exports.orderPizza = async (req, res) => {
     const { phone, address } = req.body
-    console.log(req.body)
     if (!phone || !address) {
         req.flash('error', 'All fields are required')
         return res.redirect('/cart')
@@ -14,15 +12,19 @@ exports.orderPizza = async (req, res) => {
         phone,
         address
     })
-    try {
-        order.save()
-        req.flash('success', 'Order Placed SuccessFully')
-        delete req.session.cart
+    order.save().then((result) => {
+   Order.populate(result,{path:'customerId'},(err,placedOrder)=>{
+       req.flash('success','Order Placed Successfully')
+       delete req.session.cart
+       //Emit
+        const eventEmitter = req.app.get('eventEmitter')
+        eventEmitter.emit('orderPlaced',result)
         return res.redirect('/customer/orders')
-    } catch (err) {
-        req.flash('error', 'Something Went Wrong !!')
+   })
+    }).catch(err=>{
+        req.flash('error',`Something Went Wrong !!! --- \n ${err}`)
         return res.redirect('/cart')
-    }
+    })
 }
 
 exports.showOrders = async (req, res) => {
