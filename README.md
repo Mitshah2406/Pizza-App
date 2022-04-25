@@ -1,6 +1,5 @@
 # pizza app using Node-express-mongo-socket.io
 
-![Realtime Pizza app]()
 
 
 
