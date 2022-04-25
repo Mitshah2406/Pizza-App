@@ -84,7 +84,6 @@ export function initAdmin(socket) {
             text: 'New Order Recieved...',
             progressBar: false,
             timeout: 2000,
-            layout: 'bottomRight'
         }).show();
         orders.unshift(order)
         orderTableBody.innerHTML = ``

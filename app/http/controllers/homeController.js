@@ -8,7 +8,6 @@ exports.home = async (req, res) => {
     catch(err){
         res.send("404 - Error in finding pizza !!!!   "+err)
     }
-    // console.log(pizzas);
    
 }
 

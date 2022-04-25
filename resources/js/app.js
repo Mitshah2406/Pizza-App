@@ -13,7 +13,6 @@ function updateCart(pizza) {
             type: 'success',
             text: "Item Added To Cart",
             progressBar: false,
-            layout: 'bottomRight'
         }).show();
         cartCounter.innerText = res.data.totalQty
     }).catch(e => {
@@ -22,7 +21,6 @@ function updateCart(pizza) {
             type: 'error',//danger=error=red
             text: "Something Went Wrong!! Please Refresh Website",
             progressBar: false,
-            layout: 'bottomRight'
         }).show();
     })
 
@@ -118,6 +116,5 @@ socket.on('orderUpdated',(data)=>{
         type: 'success',
         text: `Order Status `, //for first letter in capital
         progressBar: false,
-        layout: 'bottomRight'
     }).show();
 })

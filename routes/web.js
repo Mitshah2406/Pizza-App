@@ -5,6 +5,7 @@ const cartController = require('../app/http/controllers/customer/cartController'
 const orderController = require('../app/http/controllers/customer/orderController')
 const adminOrderController = require('../app/http/controllers/admin/orderController')
 const statusController = require('../app/http/controllers/admin/statusController')
+const errorController = require('../app/http/controllers/error/errorController')
 const guest = require('../app/http/middlewares/guest')
 const auth = require('../app/http/middlewares/auth')
 const admin = require('../app/http/middlewares/admin')
@@ -34,5 +35,6 @@ router.get('/customer/orders/:id', auth, orderController.trackOrder)
 router.get('/admin/orders', admin, adminOrderController.showOrders)
 router.post('/admin/orders/status', admin, statusController.updateStatus)
 
-
+//404 route
+router.get('*',errorController.showPage);
 module.exports = router;

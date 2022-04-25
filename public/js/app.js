@@ -2219,8 +2219,7 @@ function initAdmin(socket) {
       type: 'success',
       text: 'New Order Recieved...',
       progressBar: false,
-      timeout: 2000,
-      layout: 'bottomRight'
+      timeout: 2000
     }).show();
     orders.unshift(order);
     orderTableBody.innerHTML = "";
@@ -2265,8 +2264,7 @@ function updateCart(pizza) {
       timeout: 3000,
       type: 'success',
       text: "Item Added To Cart",
-      progressBar: false,
-      layout: 'bottomRight'
+      progressBar: false
     }).show();
     cartCounter.innerText = res.data.totalQty;
   })["catch"](function (e) {
@@ -2275,8 +2273,7 @@ function updateCart(pizza) {
       type: 'error',
       //danger=error=red
       text: "Something Went Wrong!! Please Refresh Website",
-      progressBar: false,
-      layout: 'bottomRight'
+      progressBar: false
     }).show();
   });
 }
@@ -2370,8 +2367,7 @@ socket.on('orderUpdated', function (data) {
     type: 'success',
     text: "Order Status ",
     //for first letter in capital
-    progressBar: false,
-    layout: 'bottomRight'
+    progressBar: false
   }).show();
 });
 

@@ -76,7 +76,6 @@ exports.registerUser = async (req, res) => {
    
 }
 exports.logout = async(req,res)=>{
-    console.log('logout')
     req.logout()
    return res.redirect('/login')
 }

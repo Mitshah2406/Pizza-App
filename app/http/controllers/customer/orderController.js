@@ -45,6 +45,6 @@ exports.trackOrder = async (req, res) => {
         }
     }
     catch (err) {
-        res.send('404 - track order ')
+        res.render('errors/404')
     }
 }
